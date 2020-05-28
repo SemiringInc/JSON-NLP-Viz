@@ -8,9 +8,6 @@ This is an implementation of a Visualizer for [JSON-NLP] in JavaScript...
 
 
 
-
-
-
 [Semiring Inc.]: https://semiring.com/ "Semiring Inc."
 [Damir Cavar]: http://damir.cavar.me/ "Damir Cavar"
 [JSON-NLP]: https://github.com/SemiringInc/JSON-NLP "JSON-NLP"
