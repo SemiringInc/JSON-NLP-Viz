@@ -1,0 +1,1218 @@
+{
+  "meta": {
+    "DC.conformsTo": "0.1",
+    "DC.created": "2020-05-28T02:20:04",
+    "DC.date": "2020-05-28T02:20:04"
+  },
+  "documents": [
+    {
+      "meta": {
+        "DC.conformsTo": "0.1",
+        "DC.source": "NLP1 2.2.3",
+        "DC.created": "2020-05-28T02:20:04",
+        "DC.date": "2020-05-28T02:20:04",
+        "DC.language": "en"
+      },
+      "id": 1,
+      "tokenList": [
+        {
+          "id": 1,
+          "sentence_id": 1,
+          "text": "Some",
+          "lemma": "some",
+          "xpos": "DT",
+          "upos": "DET",
+          "entity_iob": "O",
+          "characterOffsetBegin": 0,
+          "characterOffsetEnd": 4,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "Xxxx"
+        },
+        {
+          "id": 2,
+          "sentence_id": 1,
+          "text": "car",
+          "lemma": "car",
+          "xpos": "NN",
+          "upos": "NOUN",
+          "entity_iob": "O",
+          "characterOffsetBegin": 5,
+          "characterOffsetEnd": 8,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 3,
+          "sentence_id": 1,
+          "text": "dealer",
+          "lemma": "dealer",
+          "xpos": "NN",
+          "upos": "NOUN",
+          "entity_iob": "O",
+          "characterOffsetBegin": 9,
+          "characterOffsetEnd": 15,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 4,
+          "sentence_id": 1,
+          "text": "called",
+          "lemma": "call",
+          "xpos": "VBD",
+          "upos": "VERB",
+          "entity_iob": "O",
+          "characterOffsetBegin": 16,
+          "characterOffsetEnd": 22,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Tense_past": "True",
+            "VerbForm_fin": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 5,
+          "sentence_id": 1,
+          "text": "me",
+          "lemma": "-PRON-",
+          "xpos": "PRP",
+          "upos": "PRON",
+          "entity_iob": "O",
+          "characterOffsetBegin": 23,
+          "characterOffsetEnd": 25,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "PronType_prs": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 6,
+          "sentence_id": 1,
+          "text": "yesterday",
+          "lemma": "yesterday",
+          "xpos": "NN",
+          "upos": "NOUN",
+          "entity_iob": "B",
+          "characterOffsetBegin": 26,
+          "characterOffsetEnd": 35,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": false
+          },
+          "shape": "xxxx",
+          "entity": "DATE"
+        },
+        {
+          "id": 7,
+          "sentence_id": 1,
+          "text": ".",
+          "lemma": ".",
+          "xpos": ".",
+          "upos": "PUNCT",
+          "entity_iob": "O",
+          "characterOffsetBegin": 35,
+          "characterOffsetEnd": 36,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": false,
+            "PunctType_peri": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          }
+        },
+        {
+          "id": 8,
+          "sentence_id": 2,
+          "text": "He",
+          "lemma": "-PRON-",
+          "xpos": "PRP",
+          "upos": "PRON",
+          "entity_iob": "O",
+          "characterOffsetBegin": 37,
+          "characterOffsetEnd": 39,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "PronType_prs": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "Xx"
+        },
+        {
+          "id": 9,
+          "sentence_id": 2,
+          "text": "tried",
+          "lemma": "try",
+          "xpos": "VBD",
+          "upos": "VERB",
+          "entity_iob": "O",
+          "characterOffsetBegin": 40,
+          "characterOffsetEnd": 45,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Tense_past": "True",
+            "VerbForm_fin": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 10,
+          "sentence_id": 2,
+          "text": "to",
+          "lemma": "to",
+          "xpos": "TO",
+          "upos": "PART",
+          "entity_iob": "O",
+          "characterOffsetBegin": 46,
+          "characterOffsetEnd": 48,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "PartType_inf": "True",
+            "VerbForm_inf": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 11,
+          "sentence_id": 2,
+          "text": "convince",
+          "lemma": "convince",
+          "xpos": "VB",
+          "upos": "VERB",
+          "entity_iob": "O",
+          "characterOffsetBegin": 49,
+          "characterOffsetEnd": 57,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "VerbForm_inf": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 12,
+          "sentence_id": 2,
+          "text": "me",
+          "lemma": "-PRON-",
+          "xpos": "PRP",
+          "upos": "PRON",
+          "entity_iob": "O",
+          "characterOffsetBegin": 58,
+          "characterOffsetEnd": 60,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "PronType_prs": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 13,
+          "sentence_id": 2,
+          "text": "to",
+          "lemma": "to",
+          "xpos": "TO",
+          "upos": "PART",
+          "entity_iob": "O",
+          "characterOffsetBegin": 61,
+          "characterOffsetEnd": 63,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "PartType_inf": "True",
+            "VerbForm_inf": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 14,
+          "sentence_id": 2,
+          "text": "buy",
+          "lemma": "buy",
+          "xpos": "VB",
+          "upos": "VERB",
+          "entity_iob": "O",
+          "characterOffsetBegin": 64,
+          "characterOffsetEnd": 67,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "VerbForm_inf": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 15,
+          "sentence_id": 2,
+          "text": "a",
+          "lemma": "a",
+          "xpos": "DT",
+          "upos": "DET",
+          "entity_iob": "O",
+          "characterOffsetBegin": 68,
+          "characterOffsetEnd": 69,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "x"
+        },
+        {
+          "id": 16,
+          "sentence_id": 2,
+          "text": "new",
+          "lemma": "new",
+          "xpos": "JJ",
+          "upos": "ADJ",
+          "entity_iob": "O",
+          "characterOffsetBegin": 70,
+          "characterOffsetEnd": 73,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Degree_pos": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 17,
+          "sentence_id": 2,
+          "text": "car",
+          "lemma": "car",
+          "xpos": "NN",
+          "upos": "NOUN",
+          "entity_iob": "O",
+          "characterOffsetBegin": 74,
+          "characterOffsetEnd": 77,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": false
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 18,
+          "sentence_id": 2,
+          "text": ",",
+          "lemma": ",",
+          "xpos": ",",
+          "upos": "PUNCT",
+          "entity_iob": "O",
+          "characterOffsetBegin": 77,
+          "characterOffsetEnd": 78,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": false,
+            "PunctType_comm": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          }
+        },
+        {
+          "id": 19,
+          "sentence_id": 2,
+          "text": "and",
+          "lemma": "and",
+          "xpos": "CC",
+          "upos": "CCONJ",
+          "entity_iob": "O",
+          "characterOffsetBegin": 79,
+          "characterOffsetEnd": 82,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "ConjType_comp": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 20,
+          "sentence_id": 2,
+          "text": "trade",
+          "lemma": "trade",
+          "xpos": "VB",
+          "upos": "VERB",
+          "entity_iob": "O",
+          "characterOffsetBegin": 83,
+          "characterOffsetEnd": 88,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "VerbForm_inf": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 21,
+          "sentence_id": 2,
+          "text": "in",
+          "lemma": "in",
+          "xpos": "RP",
+          "upos": "ADP",
+          "entity_iob": "O",
+          "characterOffsetBegin": 89,
+          "characterOffsetEnd": 91,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 22,
+          "sentence_id": 2,
+          "text": "my",
+          "lemma": "-PRON-",
+          "xpos": "PRP$",
+          "upos": "DET",
+          "entity_iob": "O",
+          "characterOffsetBegin": 92,
+          "characterOffsetEnd": 94,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Poss_yes": "True",
+            "PronType_prs": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 23,
+          "sentence_id": 2,
+          "text": "old",
+          "lemma": "old",
+          "xpos": "JJ",
+          "upos": "ADJ",
+          "entity_iob": "O",
+          "characterOffsetBegin": 95,
+          "characterOffsetEnd": 98,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Degree_pos": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 24,
+          "sentence_id": 2,
+          "text": "one",
+          "lemma": "one",
+          "xpos": "CD",
+          "upos": "NUM",
+          "entity_iob": "B",
+          "characterOffsetBegin": 99,
+          "characterOffsetEnd": 102,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "NumType_card": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": false
+          },
+          "shape": "xxx",
+          "entity": "CARDINAL"
+        },
+        {
+          "id": 25,
+          "sentence_id": 2,
+          "text": ".",
+          "lemma": ".",
+          "xpos": ".",
+          "upos": "PUNCT",
+          "entity_iob": "O",
+          "characterOffsetBegin": 102,
+          "characterOffsetEnd": 103,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": false,
+            "PunctType_peri": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          }
+        },
+        {
+          "id": 26,
+          "sentence_id": 3,
+          "text": "I",
+          "lemma": "-PRON-",
+          "xpos": "PRP",
+          "upos": "PRON",
+          "entity_iob": "O",
+          "characterOffsetBegin": 104,
+          "characterOffsetEnd": 105,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "PronType_prs": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "X"
+        },
+        {
+          "id": 27,
+          "sentence_id": 3,
+          "text": "think",
+          "lemma": "think",
+          "xpos": "VBP",
+          "upos": "VERB",
+          "entity_iob": "O",
+          "characterOffsetBegin": 106,
+          "characterOffsetEnd": 111,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Tense_pres": "True",
+            "VerbForm_fin": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 28,
+          "sentence_id": 3,
+          "text": "that",
+          "lemma": "that",
+          "xpos": "IN",
+          "upos": "SCONJ",
+          "entity_iob": "O",
+          "characterOffsetBegin": 112,
+          "characterOffsetEnd": 116,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 29,
+          "sentence_id": 3,
+          "text": "this",
+          "lemma": "this",
+          "xpos": "DT",
+          "upos": "DET",
+          "entity_iob": "O",
+          "characterOffsetBegin": 117,
+          "characterOffsetEnd": 121,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 30,
+          "sentence_id": 3,
+          "text": "was",
+          "lemma": "be",
+          "xpos": "VBD",
+          "upos": "AUX",
+          "entity_iob": "O",
+          "characterOffsetBegin": 122,
+          "characterOffsetEnd": 125,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Tense_past": "True",
+            "VerbForm_fin": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxx"
+        },
+        {
+          "id": 31,
+          "sentence_id": 3,
+          "text": "a",
+          "lemma": "a",
+          "xpos": "DT",
+          "upos": "DET",
+          "entity_iob": "O",
+          "characterOffsetBegin": 126,
+          "characterOffsetEnd": 127,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "x"
+        },
+        {
+          "id": 32,
+          "sentence_id": 3,
+          "text": "BMW",
+          "lemma": "BMW",
+          "xpos": "NNP",
+          "upos": "PROPN",
+          "entity_iob": "B",
+          "characterOffsetBegin": 128,
+          "characterOffsetEnd": 131,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "NounType_prop": "True",
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "XXX",
+          "entity": "ORG"
+        },
+        {
+          "id": 33,
+          "sentence_id": 3,
+          "text": "dealership",
+          "lemma": "dealership",
+          "xpos": "NN",
+          "upos": "NOUN",
+          "entity_iob": "O",
+          "characterOffsetBegin": 132,
+          "characterOffsetEnd": 142,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xxxx"
+        },
+        {
+          "id": 34,
+          "sentence_id": 3,
+          "text": "in",
+          "lemma": "in",
+          "xpos": "IN",
+          "upos": "ADP",
+          "entity_iob": "O",
+          "characterOffsetBegin": 143,
+          "characterOffsetEnd": 145,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": true,
+            "Alpha": true,
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "xx"
+        },
+        {
+          "id": 35,
+          "sentence_id": 3,
+          "text": "Columbus",
+          "lemma": "Columbus",
+          "xpos": "NNP",
+          "upos": "PROPN",
+          "entity_iob": "B",
+          "characterOffsetBegin": 146,
+          "characterOffsetEnd": 154,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "NounType_prop": "True",
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": true
+          },
+          "shape": "Xxxxx",
+          "entity": "LOC"
+        },
+        {
+          "id": 36,
+          "sentence_id": 3,
+          "text": "Ohio",
+          "lemma": "Ohio",
+          "xpos": "NNP",
+          "upos": "PROPN",
+          "entity_iob": "I",
+          "characterOffsetBegin": 155,
+          "characterOffsetEnd": 159,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": true,
+            "NounType_prop": "True",
+            "Number_sing": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": false
+          },
+          "shape": "Xxxx",
+          "entity": "LOC"
+        },
+        {
+          "id": 37,
+          "sentence_id": 3,
+          "text": ".",
+          "lemma": ".",
+          "xpos": ".",
+          "upos": "PUNCT",
+          "entity_iob": "O",
+          "characterOffsetBegin": 159,
+          "characterOffsetEnd": 160,
+          "lang": "en",
+          "features": {
+            "Overt": true,
+            "Stop": false,
+            "Alpha": false,
+            "PunctType_peri": "True",
+            "Foreign": false
+          },
+          "misc": {
+            "SpaceAfter": false
+          }
+        }
+      ],
+      "sentences": {
+        "1": {
+          "id": 1,
+          "tokenFrom": 1,
+          "tokenTo": 8,
+          "tokens": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        "2": {
+          "id": 2,
+          "tokenFrom": 8,
+          "tokenTo": 26,
+          "tokens": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ]
+        },
+        "3": {
+          "id": 3,
+          "tokenFrom": 26,
+          "tokenTo": 38,
+          "tokens": [
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "style": "universal",
+          "trees": [
+            {
+              "lab": "det",
+              "gov": 3,
+              "dep": 1
+            },
+            {
+              "lab": "compound",
+              "gov": 3,
+              "dep": 2
+            },
+            {
+              "lab": "nsubj",
+              "gov": 4,
+              "dep": 3
+            },
+            {
+              "lab": "root",
+              "gov": 0,
+              "dep": 4
+            },
+            {
+              "lab": "dobj",
+              "gov": 4,
+              "dep": 5
+            },
+            {
+              "lab": "npadvmod",
+              "gov": 4,
+              "dep": 6
+            },
+            {
+              "lab": "punct",
+              "gov": 4,
+              "dep": 7
+            }
+          ]
+        },
+        {
+          "style": "universal",
+          "trees": [
+            {
+              "lab": "nsubj",
+              "gov": 9,
+              "dep": 8
+            },
+            {
+              "lab": "root",
+              "gov": 0,
+              "dep": 9
+            },
+            {
+              "lab": "aux",
+              "gov": 11,
+              "dep": 10
+            },
+            {
+              "lab": "xcomp",
+              "gov": 9,
+              "dep": 11
+            },
+            {
+              "lab": "dobj",
+              "gov": 11,
+              "dep": 12
+            },
+            {
+              "lab": "aux",
+              "gov": 14,
+              "dep": 13
+            },
+            {
+              "lab": "xcomp",
+              "gov": 11,
+              "dep": 14
+            },
+            {
+              "lab": "det",
+              "gov": 17,
+              "dep": 15
+            },
+            {
+              "lab": "amod",
+              "gov": 17,
+              "dep": 16
+            },
+            {
+              "lab": "dobj",
+              "gov": 14,
+              "dep": 17
+            },
+            {
+              "lab": "punct",
+              "gov": 9,
+              "dep": 18
+            },
+            {
+              "lab": "cc",
+              "gov": 9,
+              "dep": 19
+            },
+            {
+              "lab": "conj",
+              "gov": 9,
+              "dep": 20
+            },
+            {
+              "lab": "prep",
+              "gov": 20,
+              "dep": 21
+            },
+            {
+              "lab": "poss",
+              "gov": 24,
+              "dep": 22
+            },
+            {
+              "lab": "amod",
+              "gov": 24,
+              "dep": 23
+            },
+            {
+              "lab": "pobj",
+              "gov": 21,
+              "dep": 24
+            },
+            {
+              "lab": "punct",
+              "gov": 9,
+              "dep": 25
+            }
+          ]
+        },
+        {
+          "style": "universal",
+          "trees": [
+            {
+              "lab": "nsubj",
+              "gov": 27,
+              "dep": 26
+            },
+            {
+              "lab": "root",
+              "gov": 0,
+              "dep": 27
+            },
+            {
+              "lab": "mark",
+              "gov": 30,
+              "dep": 28
+            },
+            {
+              "lab": "nsubj",
+              "gov": 30,
+              "dep": 29
+            },
+            {
+              "lab": "ccomp",
+              "gov": 27,
+              "dep": 30
+            },
+            {
+              "lab": "det",
+              "gov": 33,
+              "dep": 31
+            },
+            {
+              "lab": "compound",
+              "gov": 33,
+              "dep": 32
+            },
+            {
+              "lab": "attr",
+              "gov": 30,
+              "dep": 33
+            },
+            {
+              "lab": "prep",
+              "gov": 33,
+              "dep": 34
+            },
+            {
+              "lab": "compound",
+              "gov": 36,
+              "dep": 35
+            },
+            {
+              "lab": "pobj",
+              "gov": 34,
+              "dep": 36
+            },
+            {
+              "lab": "punct",
+              "gov": 27,
+              "dep": 37
+            }
+          ]
+        }
+      ],
+      "coreferences": [
+        {
+          "id": 0,
+          "representative": {
+            "tokens": [
+              1,
+              2,
+              3
+            ],
+            "head": 3
+          },
+          "referents": [
+            {
+              "tokens": [
+                8
+              ],
+              "head": 8
+            }
+          ]
+        }
+      ],
+      "constituents": [
+        {
+          "sentenceId": 1,
+          "labeledBracketing": "(ROOT (S (NP (DT Some) (NN car) (NN dealer)) (VP (VBD called) (NP (PRP me)) (NP (NN yesterday))) (. .)))"
+        },
+        {
+          "sentenceId": 2,
+          "labeledBracketing": "(ROOT (S (NP (PRP He)) (VP (VBD tried) (S (VP (TO to) (VP (VB convince) (NP (PRP me)) (S (VP (TO to) (VP (VP (VB buy) (NP (DT a) (JJ new) (NN car))) (, ,) (CC and) (VP (VB trade) (PRT (RP in)) (NP (PRP$ my) (JJ old) (CD one)))))))))) (. .)))"
+        },
+        {
+          "sentenceId": 3,
+          "labeledBracketing": "(ROOT (S (NP (PRP I)) (VP (VBP think) (SBAR (IN that) (S (NP (DT this)) (VP (VBD was) (NP (NP (DT a) (NNP BMW) (NN dealership)) (PP (IN in) (NP (NNP Columbus) (NNP Ohio)))))))) (. .)))"
+        }
+      ],
+      "expressions": [
+        {
+          "id": 1,
+          "type": "NP",
+          "head": 3,
+          "dependency": "nsubj",
+          "tokens": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 2,
+          "type": "NP",
+          "head": 17,
+          "dependency": "dobj",
+          "tokens": [
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "id": 3,
+          "type": "NP",
+          "head": 33,
+          "dependency": "attr",
+          "tokens": [
+            31,
+            32,
+            33
+          ]
+        },
+        {
+          "id": 4,
+          "type": "NP",
+          "head": 36,
+          "dependency": "pobj",
+          "tokens": [
+            35,
+            36
+          ]
+        }
+      ]
+    }
+  ]
+}

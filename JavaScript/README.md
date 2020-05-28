@@ -1,9 +1,9 @@
-# JSON-NLP Visualizer
+# JSON-NLP Visualizer in JavaScript
 
 (C) 2020 by [Semiring Inc.], [Damir Cavar], Abdulaziz Alimov
 
 
-This is an implementation of a Visualizer for [JSON-NLP] in [Python], [Golang], ...
+This is an implementation of a Visualizer for [JSON-NLP] in JavaScript...
 
 
 
