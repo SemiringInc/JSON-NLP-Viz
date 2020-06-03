@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>JSON-NLP-Viz</title>
+    <link rel="stylesheet" type="text/css" href="style/style-vis.css" />
+    <script type="text/javascript" src="script/head.load.min.js"></script>
+    <script type="text/javascript" src="script/visualization.js"></script>
+  </head>
+  <body>
+    <h1>JSON-NLP Visualizer</h1>
+    <label for="JSON-NLP">JSON-NLP Input:</label><br />
+    <!-- <input type="text" id="jsonnlp" /> -->
+    <textarea type="text" id="jsonnlp" rows="5" cols="60" name="description"></textarea>
+    <div style="margin-top: 4px;">
+      <div id="partOfSpeech"></div>
+      <div id="lemmas"></div>
+      <div id="entityRecognition"></div>
+      <div id="constituencyParse"></div>
+      <div id="dependencies"></div>
+      <div id="coreference"></div>
+      <div id="sentiment"></div>
+    </div>
+  </body>
+</html>
