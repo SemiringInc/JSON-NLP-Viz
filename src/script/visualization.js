@@ -25,133 +25,113 @@ var webFontURLs = [
 ]
 
 var collData = {
-  entity_types: [
-    {
-      type: 'Person',
-      labels: ['Person', 'Per'],
-      bgColor: '#7fa2ff',
-      borderColor: 'darken'
-    }
-  ],
-  relation_types: [
-    {
-      type: 'Anaphora',
-      labels: ['Anaphora', 'Ana'],
-      dashArray: '3,3',
-      color: 'purple',
-      args: [
-        {
-          role: 'Anaphor',
-          targets: ['Person']
-        },
-        {
-          role: 'Entity',
-          targets: ['Person']
-        }
-      ]
-    }
-  ],
-  event_types: [
-    {
-      type: 'Assassination',
-      labels: ['Assassination', 'Assas'],
-      bgColor: 'lightgreen',
-      borderColor: 'darken',
-      arcs: [
-        {
-          type: 'Victim',
-          labels: ['Victim', 'Vict']
-        },
-        {
-          type: 'Perpetrator',
-          labels: ['Perpetrator', 'Perp'],
-          color: 'green'
-        }
-      ]
-    }
-  ]
+  entity_types: [],
+  relation_types: [],
+  event_types: []
 }
 
 var docData = {
-  text: "Ed O'Kelley was the man who shot the man who shot Jesse James.",
-  entities: [
-    ['T1', 'Person', [[0, 11]]],
-    ['T2', 'Person', [[20, 23]]],
-    ['T3', 'Person', [[37, 40]]],
-    ['T4', 'Person', [[50, 61]]]
-  ],
-  attributes: [['A1', 'T4']],
-  relations: [
-    [
-      'R1',
-      'Anaphora',
-      [
-        ['Anaphor', 'T2'],
-        ['Entity', 'T1']
-      ]
-    ]
-  ],
-  triggers: [
-    ['T5', 'Assassination', [[45, 49]]],
-    ['T6', 'Assassination', [[28, 32]]]
-  ],
-  events: [
-    [
-      'E1',
-      'T5',
-      [
-        ['Perpetrator', 'T3'],
-        ['Victim', 'T4']
-      ]
-    ],
-    [
-      'E2',
-      'T6',
-      [
-        ['Perpetrator', 'T2'],
-        ['Victim', 'T3']
-      ]
-    ]
-  ]
+  text: '',
+  entities: [],
+  attributes: [],
+  relations: [],
+  triggers: [],
+  events: []
 }
+
+var collInput
+var elements = [
+  'partOfSpeech',
+  'lemmas',
+  'entityRecognition',
+  'constituencyParse',
+  'dependencies',
+  'coreference',
+  'sentiment'
+]
 
 head.ready(() => {
   var collInput = $('#jsonnlp')
-  collInput.html('{"asdf": "asdf"}')
+  collInput.html(data)
+  inputHandler()
 
-  var liveDispatcher = Util.embed(
-    'partOfSpeech',
-    $.extend({ collection: null }, collData),
-    $.extend({}, docData),
-    webFontURLs
-  )
+  collInput.bind('input', inputHandler)
+})
 
+function inputHandler() {
+  var collInput = $('#jsonnlp')
+  try {
+    var JSONNLP = JSON.parse(collInput.val())
+    var tokens = JSONNLP.documents[0].tokenList
+    buildText(tokens)
+    buildXpos(tokens)
+
+    collInput.css({ outlineColor: 'black' })
+  } catch (e) {
+    console.info(e)
+    collInput.css({ outlineColor: 'red' })
+    return
+  }
+
+  visualizationHandler('partOfSpeech')
+}
+
+function getRandomColor() {
+  var letters = '89ABCDEF'.split('')
+  var color = '#'
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * letters.length)]
+  }
+  return color
+}
+
+function buildText(tokens) {
+  docData.text = ''
+  tokens.forEach((token) => {
+    docData.text += token.text
+    if (token.misc.SpaceAfter) {
+      docData.text += ' '
+    }
+  })
+}
+
+function buildXpos(tokens) {
+  var entitySet = new Set()
+  tokens.forEach((token) => {
+    entitySet.add(token.xpos)
+    var entity = [
+      token.id.toString(),
+      token.xpos,
+      [[token.characterOffsetBegin, token.characterOffsetEnd]]
+    ]
+    docData.entities.push(entity)
+  })
+
+  entitySet.forEach((entity) => {
+    var entityType = {
+      type: entity,
+      labels: [entity],
+      bgColor: '.,:;'.includes(entity) ? '#d3d3d3' : getRandomColor(),
+      borderColor: 'darken'
+    }
+    collData.entity_types.push(entityType)
+  })
+}
+
+function visualizationHandler(elementID) {
   var renderError = () => {
     collInput.css({ border: '2px solid red' })
   }
 
-  liveDispatcher.on('renderError: Fatal', renderError)
-
-  var collInputHandler = () => {
-    var collJSON
-    try {
-      collJSON = collData
-      var jkl = JSON.parse(collInput.val())
-      console.info('asdf')
-      collInput.css({ outlineColor: 'black' })
-    } catch (e) {
-      collInput.css({ outlineColor: 'red' })
-      return
-    }
-
-    try {
-      liveDispatcher.post('collectionLoaded', [$.extend({ collection: null }, collJSON)])
-    } catch (e) {
-      console.error('collectionLoaded went down with:', e)
-      collInput.css({ outlineColor: 'red' })
-    }
-  }
-
-  var listenTo = 'input'
-  collInput.bind(listenTo, collInputHandler)
-})
+  var element = $('#' + elementID)
+  element.empty()
+  element.removeAttr('style')
+  element.removeAttr('class')
+  var dispatcher = Util.embed(
+    elementID,
+    $.extend({ collection: null }, collData),
+    $.extend({}, docData),
+    webFontURLs
+  )
+  dispatcher.on('renderError: Fatal', renderError)
+}
