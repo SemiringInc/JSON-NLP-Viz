@@ -1,6 +1,5 @@
 head.js(
   // External libraries
-  'script/jquery.min.js',
   'script/jquery.svg.min.js',
   'script/jquery.svgdom.min.js',
 
@@ -24,23 +23,23 @@ var webFontURLs = [
   'fonts/Liberation_Sans-Regular.ttf'
 ]
 
-var collData = {
-  entity_types: [],
-  relation_types: [],
-  event_types: []
+class CollData {
+  entity_types = []
+  relation_types = []
+  event_types = []
 }
 
-var docData = {
-  text: '',
-  entities: [],
-  attributes: [],
-  relations: [],
-  triggers: [],
-  events: []
+class DocData {
+  text = ''
+  entities = []
+  attributes = []
+  relations = []
+  triggers = []
+  events = []
 }
 
 var collInput
-var elements = [
+var visualizationDivs = [
   'partOfSpeech',
   'lemmas',
   'entityRecognition',
@@ -60,11 +59,21 @@ head.ready(() => {
 
 function inputHandler() {
   var collInput = $('#jsonnlp')
+  $('#visualization').empty()
   try {
     var JSONNLP = JSON.parse(collInput.val())
-    var tokens = JSONNLP.documents[0].tokenList
-    buildText(tokens)
-    buildXpos(tokens)
+    JSONNLP.documents.forEach((doc, index) => {
+      $('#visualization').append(
+        '<div class="card"><div id="document' + index + '" class="card-body"></div></div>'
+      )
+      $('#document' + index).append('<h5 class="card-title">Document ' + (index + 1) + '</h5>')
+
+      visualizationDivs.forEach((viz) => {
+        $('#document' + index).append('<h6>' + getStartCase(viz) + '</h6>')
+        $('#document' + index).append('<div id="' + viz + index + '"></div>')
+      })
+      buildDocument(index, doc)
+    })
 
     collInput.css({ outlineColor: 'black' })
   } catch (e) {
@@ -72,8 +81,16 @@ function inputHandler() {
     collInput.css({ outlineColor: 'red' })
     return
   }
+}
 
-  visualizationHandler('partOfSpeech')
+function buildDocument(index, document) {
+  var tokens = document.tokenList
+  buildPartOfSpeech(tokens, index)
+}
+
+function getStartCase(text) {
+  var result = text.replace(/([A-Z])/g, ' $1')
+  return result.charAt(0).toUpperCase() + result.slice(1)
 }
 
 function getRandomColor() {
@@ -86,16 +103,20 @@ function getRandomColor() {
 }
 
 function buildText(tokens) {
-  docData.text = ''
+  var output = ''
   tokens.forEach((token) => {
-    docData.text += token.text
+    output += token.text
     if (token.misc.SpaceAfter) {
-      docData.text += ' '
+      output += ' '
     }
   })
+  return output
 }
 
-function buildXpos(tokens) {
+function buildPartOfSpeech(tokens, index) {
+  var collData = new CollData()
+  var docData = new DocData()
+  docData.text = buildText(tokens)
   var entitySet = new Set()
   tokens.forEach((token) => {
     entitySet.add(token.xpos)
@@ -116,17 +137,15 @@ function buildXpos(tokens) {
     }
     collData.entity_types.push(entityType)
   })
+  visualizationHandler('partOfSpeech' + index, collData, docData)
 }
 
-function visualizationHandler(elementID) {
+function visualizationHandler(elementID, collData, docData) {
+  var collInput = $('#jsonnlp')
   var renderError = () => {
-    collInput.css({ border: '2px solid red' })
+    collInput.css({ outlineColor: 'red' })
   }
 
-  var element = $('#' + elementID)
-  element.empty()
-  element.removeAttr('style')
-  element.removeAttr('class')
   var dispatcher = Util.embed(
     elementID,
     $.extend({ collection: null }, collData),

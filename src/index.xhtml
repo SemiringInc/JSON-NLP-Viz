@@ -3,23 +3,56 @@
   <head>
     <title>JSON-NLP-Viz</title>
     <link rel="stylesheet" type="text/css" href="style/style-vis.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="script/head.load.min.js"></script>
     <script type="text/javascript" src="script/visualization.js"></script>
     <script type="text/javascript" src="example1.json"></script>
   </head>
   <body>
-    <h1>JSON-NLP Visualizer</h1>
-    <label for="JSON-NLP">JSON-NLP Input:</label><br />
-    <!-- <input type="text" id="jsonnlp" /> -->
-    <textarea type="text" id="jsonnlp" rows="5" cols="60" name="description"></textarea>
-    <div style="margin-top: 4px;" id="visualization">
-      <div id="partOfSpeech"></div>
-      <div id="lemmas"></div>
-      <div id="entityRecognition"></div>
-      <div id="constituencyParse"></div>
-      <div id="dependencies"></div>
-      <div id="coreference"></div>
-      <div id="sentiment"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 my-2">
+          <h1>JSON-NLP Live Visualizer</h1>
+
+          <div class="card">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <h5 for="JSON-NLP" class="card-title">JSON-NLP Input:</h5>
+                  <textarea
+                    class="form-control"
+                    type="text"
+                    id="jsonnlp"
+                    rows="10"
+                    name="description"
+                  ></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 my-2" id="visualization"></div>
+      </div>
     </div>
   </body>
 </html>
