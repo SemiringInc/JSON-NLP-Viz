@@ -492,13 +492,15 @@ fieldset legend {
   user-select: none;
   cursor: default;
 }
+
+/* Broken font, combines periods with the previous letter leading to visualization bugs.
 @font-face {
   font-family: 'Liberation Sans';
   font-style: normal;
   font-weight: normal;
   src: local('Liberation Sans'), local('Liberation-Sans'),
     url('fonts/Liberation_Sans-Regular.ttf') format('truetype');
-}
+} */
 @font-face {
   font-family: 'PT Sans Caption';
   font-style: normal;

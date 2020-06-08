@@ -18,9 +18,8 @@ head.js(
 var ready = false
 
 var webFontURLs = [
-  'fonts/Astloch-Bold.ttf',
-  'fonts/PT_Sans-Caption-Web-Regular.ttf',
-  'fonts/Liberation_Sans-Regular.ttf'
+  'fonts/Astloch-Bold.ttf'
+  // 'fonts/PT_Sans-Caption-Web-Regular.ttf'
 ]
 
 class CollData {
@@ -69,7 +68,7 @@ function inputHandler() {
       $('#document' + index).append('<h5 class="card-title">Document ' + (index + 1) + '</h5>')
 
       visualizationDivs.forEach((viz) => {
-        $('#document' + index).append('<h6>' + getStartCase(viz) + '</h6>')
+        $('#document' + index).append('<h6 class="my-2">' + getStartCase(viz) + '</h6>')
         $('#document' + index).append('<div id="' + viz + index + '"></div>')
       })
       buildDocument(index, doc)
@@ -85,7 +84,14 @@ function inputHandler() {
 
 function buildDocument(index, document) {
   var tokens = document.tokenList
-  buildPartOfSpeech(tokens, index)
+  var relations = document.dependencies.flatMap((dependency) => dependency.trees)
+  var coreferences = document.coreferences
+  var text = buildText(tokens)
+  buildPartOfSpeech(tokens, index, text)
+  buildLemmas(tokens, index, text)
+  buildEntityRecognition(tokens, index, text)
+  buildDependencies(tokens, relations, index, text)
+  buildCoreferences(tokens, coreferences, index, text)
 }
 
 function getStartCase(text) {
@@ -113,10 +119,10 @@ function buildText(tokens) {
   return output
 }
 
-function buildPartOfSpeech(tokens, index) {
+function buildPartOfSpeech(tokens, index, text) {
   var collData = new CollData()
   var docData = new DocData()
-  docData.text = buildText(tokens)
+  docData.text = text
   var entitySet = new Set()
   tokens.forEach((token) => {
     entitySet.add(token.xpos)
@@ -138,6 +144,156 @@ function buildPartOfSpeech(tokens, index) {
     collData.entity_types.push(entityType)
   })
   visualizationHandler('partOfSpeech' + index, collData, docData)
+}
+
+function buildLemmas(tokens, index, text) {
+  var collData = new CollData()
+  var docData = new DocData()
+  docData.text = text
+  var entitySet = new Set()
+  tokens.forEach((token) => {
+    entitySet.add(token.lemma)
+    var entity = [
+      token.id.toString(),
+      token.lemma,
+      [[token.characterOffsetBegin, token.characterOffsetEnd]]
+    ]
+    docData.entities.push(entity)
+  })
+
+  entitySet.forEach((entity) => {
+    var entityType = {
+      type: entity,
+      labels: [entity],
+      bgColor: '.,:;'.includes(entity) ? '#d3d3d3' : getRandomColor(),
+      borderColor: 'darken'
+    }
+    collData.entity_types.push(entityType)
+  })
+  visualizationHandler('lemmas' + index, collData, docData)
+}
+
+function buildEntityRecognition(tokens, index, text) {
+  var collData = new CollData()
+  var docData = new DocData()
+  docData.text = text
+  var entitySet = new Set()
+  tokens.forEach((token) => {
+    if (token.hasOwnProperty('entity')) {
+      entitySet.add(token.entity)
+      var entity = [
+        token.id.toString(),
+        token.entity,
+        [[token.characterOffsetBegin, token.characterOffsetEnd]]
+      ]
+      docData.entities.push(entity)
+    }
+  })
+  //TODO add entity combining if there are multiple of the same type in a row
+
+  entitySet.forEach((entity) => {
+    var entityType = {
+      type: entity,
+      labels: [entity],
+      bgColor: '.,:;'.includes(entity) ? '#d3d3d3' : getRandomColor(),
+      borderColor: 'darken'
+    }
+    collData.entity_types.push(entityType)
+  })
+  visualizationHandler('entityRecognition' + index, collData, docData)
+}
+
+function buildDependencies(tokens, relations, index, text) {
+  var collData = new CollData()
+  var docData = new DocData()
+  docData.text = text
+  var entitySet = new Set()
+  tokens.forEach((token) => {
+    entitySet.add(token.upos)
+    var entity = [
+      token.id.toString(),
+      token.upos,
+      [[token.characterOffsetBegin, token.characterOffsetEnd]]
+    ]
+    docData.entities.push(entity)
+  })
+
+  entitySet.forEach((entity) => {
+    var entityType = {
+      type: entity,
+      labels: [entity],
+      bgColor: '.,:;'.includes(entity) ? '#d3d3d3' : getRandomColor(),
+      borderColor: 'darken'
+    }
+    collData.entity_types.push(entityType)
+  })
+  relations.forEach((relation, index) => {
+    var dependency = [
+      index.toString(),
+      relation.lab,
+      [
+        [relation.lab, relation.gov],
+        [relation.lab, relation.dep]
+      ]
+    ]
+    docData.relations.push(dependency)
+  })
+  visualizationHandler('dependencies' + index, collData, docData)
+}
+
+function buildCoreferences(tokens, references, index, text) {
+  var collData = new CollData()
+  var docData = new DocData()
+  docData.text = text
+  var entitySet = new Set()
+  references.forEach((reference) => {
+    entitySet.add('Referenced')
+    var referenceTokens = reference.representative.tokens
+    var firstToken = tokens.find((token) => token.id === referenceTokens[0])
+    var lastToken = tokens.find((token) => token.id === referenceTokens[referenceTokens.length - 1])
+    var entity = [
+      reference.id.toString(),
+      'Referenced',
+      [[firstToken.characterOffsetBegin, lastToken.characterOffsetEnd]]
+    ]
+    docData.entities.push(entity)
+
+    reference.referents.forEach((childReference, childIndex) => {
+      entitySet.add('References')
+      var referenceTokens = childReference.tokens
+      var firstToken = tokens.find((token) => token.id === referenceTokens[0])
+      var lastToken = tokens.find(
+        (token) => token.id === referenceTokens[referenceTokens.length - 1]
+      )
+      var id = reference.id.toString() + childIndex
+      var entity = [
+        id,
+        'References',
+        [[firstToken.characterOffsetBegin, lastToken.characterOffsetEnd]]
+      ]
+      docData.entities.push(entity)
+      var dependency = [
+        id.toString(),
+        'coref',
+        [
+          ['coref', id],
+          ['coref', reference.id.toString()]
+        ]
+      ]
+      docData.relations.push(dependency)
+    })
+  })
+
+  entitySet.forEach((entity) => {
+    var entityType = {
+      type: entity,
+      labels: [entity],
+      bgColor: '.,:;'.includes(entity) ? '#d3d3d3' : getRandomColor(),
+      borderColor: 'darken'
+    }
+    collData.entity_types.push(entityType)
+  })
+  visualizationHandler('coreference' + index, collData, docData)
 }
 
 function visualizationHandler(elementID, collData, docData) {
