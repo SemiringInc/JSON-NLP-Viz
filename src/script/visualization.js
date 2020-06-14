@@ -86,12 +86,14 @@ function buildDocument(index, document) {
   var tokens = document.tokenList
   var relations = document.dependencies.flatMap((dependency) => dependency.trees)
   var coreferences = document.coreferences
+  var constituents = document.constituents
   var text = buildText(tokens)
   buildPartOfSpeech(tokens, index, text)
   buildLemmas(tokens, index, text)
   buildEntityRecognition(tokens, index, text)
   buildDependencies(tokens, relations, index, text)
   buildCoreferences(tokens, coreferences, index, text)
+  buildConstituencyParse(constituents, index, text)
 }
 
 function getStartCase(text) {
@@ -178,17 +180,48 @@ function buildEntityRecognition(tokens, index, text) {
   var docData = new DocData()
   docData.text = text
   var entitySet = new Set()
+  var currentEntity = {
+    id: undefined,
+    entity: undefined,
+    locationStart: undefined,
+    locationEnd: undefined
+  }
   tokens.forEach((token) => {
     if (token.hasOwnProperty('entity')) {
       entitySet.add(token.entity)
+
+      if (!currentEntity.id) {
+        currentEntity.id = token.id.toString()
+        currentEntity.entity = token.entity
+        currentEntity.locationStart = token.characterOffsetBegin
+        currentEntity.locationEnd = token.characterOffsetEnd
+      } else if (
+        currentEntity.entity === token.entity &&
+        currentEntity.locationEnd === token.characterOffsetBegin - 1
+      ) {
+        currentEntity.locationEnd = token.characterOffsetEnd
+      } else {
+        var entity = [
+          currentEntity.id,
+          currentEntity.entity,
+          [[currentEntity.locationStart, currentEntity.locationEnd]]
+        ]
+        docData.entities.push(entity)
+        currentEntity.id = token.id.toString()
+        currentEntity.entity = token.entity
+        currentEntity.locationStart = token.characterOffsetBegin
+        currentEntity.locationEnd = token.characterOffsetEnd
+      }
+
       var entity = [
-        token.id.toString(),
-        token.entity,
-        [[token.characterOffsetBegin, token.characterOffsetEnd]]
+        currentEntity.id,
+        currentEntity.entity,
+        [[currentEntity.locationStart, currentEntity.locationEnd]]
       ]
       docData.entities.push(entity)
     }
   })
+
   //TODO add entity combining if there are multiple of the same type in a row
 
   entitySet.forEach((entity) => {
@@ -294,6 +327,29 @@ function buildCoreferences(tokens, references, index, text) {
     collData.entity_types.push(entityType)
   })
   visualizationHandler('coreference' + index, collData, docData)
+}
+
+function buildConstituencyParse(constituents, index, text) {
+  var term_font = 'sans-serif'
+  var nonterm_font = 'sans-serif'
+  var color = true
+  var term_lines = true
+  font_size = 16
+  vert_space = 50
+  hor_space = 10
+  term_font = term_font + font_size + 'pt '
+  nonterm_font = nonterm_font + font_size + 'pt '
+
+  // Get the string.
+  var str =
+    '[ROOT[S[NP[NNP[John]][NNP[Smith]]][VP[VBD[met]][NP[NNP[Susan]][NNP[Peters]]][PP[IN[at]][NP[NP[DT[a]][NN[party]]][PP[IN[in]][NP[NNP[San]][NNP[Francisco]]]]]]][.[.]]]]'
+
+  /*$("#image-goes-here").text(str + ", " + font_size + ", " + 
+		term_font + ", " + nonterm_font + ", " + vert_space + ", " + hor_space);*/
+
+  var img = go(str, font_size, term_font, nonterm_font, vert_space, hor_space, color, term_lines)
+  $('#constituencyParse' + index).empty()
+  $('#constituencyParse' + index).append(img)
 }
 
 function visualizationHandler(elementID, collData, docData) {
