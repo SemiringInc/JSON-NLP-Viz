@@ -50,9 +50,11 @@ var visualizationDivs = [
 
 head.ready(() => {
   var collInput = $('#jsonnlp')
-  // collInput.html(data)
-  // inputHandler()
-
+  var doit
+  window.onresize = function () {
+    clearTimeout(doit)
+    doit = setTimeout(this.inputHandler, 100)
+  }
   collInput.bind('input', inputHandler)
 })
 
