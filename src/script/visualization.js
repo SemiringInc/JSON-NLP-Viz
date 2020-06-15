@@ -50,8 +50,8 @@ var visualizationDivs = [
 
 head.ready(() => {
   var collInput = $('#jsonnlp')
-  collInput.html(data)
-  inputHandler()
+  // collInput.html(data)
+  // inputHandler()
 
   collInput.bind('input', inputHandler)
 })
@@ -84,16 +84,18 @@ function inputHandler() {
 
 function buildDocument(index, document) {
   var tokens = document.tokenList
-  var relations = document.dependencies.flatMap((dependency) => dependency.trees)
+  var relations = document.dependencyTrees.flatMap((dependency) => dependency.dependencies)
   var coreferences = document.coreferences
   var constituents = document.constituents
+  var sentences = document.sentences
   var text = buildText(tokens)
   buildPartOfSpeech(tokens, index, text)
   buildLemmas(tokens, index, text)
   buildEntityRecognition(tokens, index, text)
   buildDependencies(tokens, relations, index, text)
   buildCoreferences(tokens, coreferences, index, text)
-  buildConstituencyParse(constituents, index, text)
+  buildConstituencyParse(constituents, index)
+  buildSentiment(tokens, sentences, index, text)
 }
 
 function getStartCase(text) {
@@ -329,7 +331,7 @@ function buildCoreferences(tokens, references, index, text) {
   visualizationHandler('coreference' + index, collData, docData)
 }
 
-function buildConstituencyParse(constituents, index, text) {
+function buildConstituencyParse(constituents, index) {
   var term_font = 'sans-serif'
   var nonterm_font = 'sans-serif'
   var color = true
@@ -339,17 +341,59 @@ function buildConstituencyParse(constituents, index, text) {
   hor_space = 10
   term_font = term_font + font_size + 'pt '
   nonterm_font = nonterm_font + font_size + 'pt '
-
-  // Get the string.
-  var str =
-    '[ROOT[S[NP[NNP[John]][NNP[Smith]]][VP[VBD[met]][NP[NNP[Susan]][NNP[Peters]]][PP[IN[at]][NP[NP[DT[a]][NN[party]]][PP[IN[in]][NP[NNP[San]][NNP[Francisco]]]]]]][.[.]]]]'
-
-  /*$("#image-goes-here").text(str + ", " + font_size + ", " + 
-		term_font + ", " + nonterm_font + ", " + vert_space + ", " + hor_space);*/
-
-  var img = go(str, font_size, term_font, nonterm_font, vert_space, hor_space, color, term_lines)
   $('#constituencyParse' + index).empty()
-  $('#constituencyParse' + index).append(img)
+
+  constituents.forEach((con, conIndex) => {
+    var output = con.labeledBracketing.replace(/\(/g, '[').replace(/\)/g, ']')
+    var id = 'csp' + index + ':' + conIndex
+    var element = $('<div id="' + id + '"></div>')
+    $('#constituencyParse' + index).append(element)
+    element.append('<p>Sentence ' + (conIndex + 1) + '</p>')
+    var img = go(
+      output,
+      font_size,
+      term_font,
+      nonterm_font,
+      vert_space,
+      hor_space,
+      color,
+      term_lines
+    )
+    element.append(img)
+  })
+}
+
+function buildSentiment(tokens, sentences, index, text) {
+  var collData = new CollData()
+  var docData = new DocData()
+  docData.text = text
+  var entitySet = new Set()
+  for (const property in sentences) {
+    const sentence = sentences[property]
+    entitySet.add(sentence.sentiment)
+    var entity = [
+      sentence.id.toString(),
+      sentence.sentiment,
+      [
+        [
+          tokens.find((element) => element.id === sentence.tokenFrom).characterOffsetBegin,
+          tokens.find((element) => element.id === sentence.tokenTo - 1).characterOffsetEnd
+        ]
+      ]
+    ]
+    docData.entities.push(entity)
+  }
+
+  entitySet.forEach((entity) => {
+    var entityType = {
+      type: entity,
+      labels: [entity],
+      bgColor: '.,:;'.includes(entity) ? '#d3d3d3' : getRandomColor(),
+      borderColor: 'darken'
+    }
+    collData.entity_types.push(entityType)
+  })
+  visualizationHandler('sentiment' + index, collData, docData)
 }
 
 function visualizationHandler(elementID, collData, docData) {
