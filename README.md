@@ -8,6 +8,10 @@ This is an implementation of a Visualizer for [JSON-NLP] in [Python], [Golang], 
 The [JSON-NLP] standard is a rich JSON Schema that provides extended capabilities to annotate and exchange Natural Language Processing results and annotations for some text or collection of texts.
 
 
+## Live-Demo
+
+See the demo here: [https://semiringinc.github.io/JSON-NLP-Viz/](https://semiringinc.github.io/JSON-NLP-Viz/).
+
 
 
 
