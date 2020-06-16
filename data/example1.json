@@ -693,7 +693,8 @@
             10,
             11,
             12
-          ]
+          ],
+          "sentiment": "neutral"
         },
         "2": {
           "id": 2,
@@ -707,7 +708,8 @@
             17,
             18,
             19
-          ]
+          ],
+          "sentiment": "positive"
         },
         "3": {
           "id": 3,
@@ -723,13 +725,15 @@
             26,
             27,
             28
-          ]
+          ],
+          "sentiment": "neutral"
         }
       },
-      "dependencies": [
+      "dependencyTrees": [
         {
+          "sentenceID": 1,
           "style": "universal",
-          "trees": [
+          "dependencies": [
             {
               "lab": "compound",
               "gov": 2,
@@ -793,8 +797,9 @@
           ]
         },
         {
+          "sentenceID": 2,
           "style": "universal",
-          "trees": [
+          "dependencies": [
             {
               "lab": "nsubj",
               "gov": 14,
@@ -833,8 +838,9 @@
           ]
         },
         {
+          "sentenceID": 3,
           "style": "universal",
-          "trees": [
+          "dependencies": [
             {
               "lab": "nsubj",
               "gov": 22,
