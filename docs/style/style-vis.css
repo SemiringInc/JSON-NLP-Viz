@@ -11,14 +11,12 @@ text {
 }
 */
 
-.mainHeader {
+#mainHeader {
   font-family: Roboto;
-  font-weight: 300;
 }
 
 #subHeader {
   font-family: Roboto;
-  font-weight: 300;
 }
 
 #svg {
