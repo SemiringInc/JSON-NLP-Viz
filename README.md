@@ -1,6 +1,6 @@
 # JSON-NLP Visualizer
 
-(C) 2020 by [Semiring Inc.], [Damir Cavar], Abdulaziz Alimov
+(C) 2020 by [Semiring Inc.], [Damir Cavar], [Abdulaziz Alimov]
 
 
 This is an implementation of a Visualizer for [JSON-NLP] in [Python], [Golang], ...
@@ -20,3 +20,4 @@ See the demo here: [https://semiringinc.github.io/JSON-NLP-Viz/](https://semirin
 [JSON-NLP]: https://github.com/SemiringInc/JSON-NLP "JSON-NLP"
 [Python]: https://www.python.org/ "Python"
 [Golang]: https://golang.org/ "Go Language"
+[Abdulaziz Alimov]: https://github.com/alimoabd2127 "Abdulaziz Alimov"
