@@ -50,6 +50,7 @@ var visualizationDivs = [
 
 head.ready(() => {
   var collInput = $('#jsonnlp')
+  inputHandler()
   var doit
   window.onresize = function () {
     clearTimeout(doit)
